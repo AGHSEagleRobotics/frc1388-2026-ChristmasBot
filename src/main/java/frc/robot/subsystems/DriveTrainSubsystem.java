@@ -11,19 +11,36 @@ import frc.robot.DriveTrainConstants.OperatorConstants;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class DriveTrainSubsystem extends SubsystemBase {
   private final WPI_VictorSPX m_luffy = new WPI_VictorSPX(OperatorConstants.LEFT_FRONT_MOTOR);
   private final WPI_VictorSPX m_rafeal = new WPI_VictorSPX(OperatorConstants.RIGHT_FRONT_MOTOR);
   private final WPI_TalonSRX m_rob = new WPI_TalonSRX(OperatorConstants.RIGHT_BACK_MOTOR);
   private final WPI_TalonSRX m_libby = new WPI_TalonSRX(OperatorConstants.LEFT_BACK_MOTOR);
-  
+  // private final double power = new double(PowerConstants.power);
+
+
   /** Creates a new DriveTrainSubsystem. */
-  public DriveTrainSubsystem() {}
+  public DriveTrainSubsystem() {
+
+    m_libby.setInverted(true);
+    m_luffy.setInverted(true);
+
+  }
+
+  public void setPower(double power) {
+    // double power = 0.5;
+    m_libby.set(ControlMode.PercentOutput, power);
+    m_luffy.set(ControlMode.PercentOutput, power);
+    m_rafeal.set(ControlMode.PercentOutput, power);
+    m_rob.set(ControlMode.PercentOutput, power);
+  }
 
   public Command leftSideForward() {
     return null;
   }
+
 
 
   @Override

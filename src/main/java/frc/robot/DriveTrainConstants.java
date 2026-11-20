@@ -21,4 +21,9 @@ public final class DriveTrainConstants {
     public static final int RIGHT_BACK_MOTOR = 3;
     public static final int LEFT_BACK_MOTOR = 4;
   }
+  public static class PowerConstants {
+
+    public static final double power = 0.5;
+    
+  }
 }
